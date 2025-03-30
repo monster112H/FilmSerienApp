@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "filmserienapp",
-    "slug": "filmserienapp",
+    "name": "serienfilmapp",
+    "slug": "serienfilmapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -42,7 +42,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "65d981f8-f639-496b-82aa-b30ec0017f89"
+        "projectId": "fc043e77-20a8-4ddd-b8c7-cb8d1a02f271"
       }
     },
     "owner": "monster112h"
