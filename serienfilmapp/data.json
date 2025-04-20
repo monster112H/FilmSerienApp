@@ -1,0 +1,28 @@
+[
+    {
+        "titel": "Serie 1",
+        "season": 2,
+        "episode": 1
+    },
+    {
+        "titel": "Serie 2",
+        "season": 9,
+        "episode": 33
+    },
+    {
+        "titel": "Serie 3",
+        "season": 28,
+        "episode": 7
+    },
+    {
+        "titel": "Serie 4",
+        "season": 5,
+        "episode": 66
+    },
+    {
+        "titel": "Serie 5",
+        "season": 500,
+        "episode": 636
+    }
+
+]
