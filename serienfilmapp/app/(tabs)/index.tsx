@@ -100,23 +100,10 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#1A1A1A',
     borderRadius: 16,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    borderColor: "#b6bab6",
-    borderWidth: .2,
-    marginBottom: 12,
-    shadowColor: 'green',
-=======
->>>>>>> e371fbb81b62653d2cb1cfb25b5d9debd1674afd
     borderColor: "#8b8c8b",
-    borderWidth: .1,
+    borderWidth: .2,
     marginBottom: 16,
     shadowColor: '#8b8c8b',
-<<<<<<< HEAD
-=======
->>>>>>> ce62e55d650d048b5c428a9945896e75a24815c4
->>>>>>> e371fbb81b62653d2cb1cfb25b5d9debd1674afd
     shadowOffset: {
       width: 0,
       height: 0,
@@ -175,16 +162,7 @@ const styles = StyleSheet.create({
 
   seriesText: {
     color: "white",
-<<<<<<< HEAD
     fontWeight: "500"
-=======
-<<<<<<< HEAD
-    fontWeight: '500',
-    fontSize: 17
-=======
-    fontWeight: "500"
->>>>>>> ce62e55d650d048b5c428a9945896e75a24815c4
->>>>>>> e371fbb81b62653d2cb1cfb25b5d9debd1674afd
   },
 
   addIcon: {
