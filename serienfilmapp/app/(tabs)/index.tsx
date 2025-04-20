@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#1A1A1A',
     borderRadius: 16,
-    borderColor: "#b6bab6",
-    borderWidth: .2,
-    marginBottom: 12,
-    shadowColor: 'green',
+    borderColor: "#8b8c8b",
+    borderWidth: .1,
+    marginBottom: 16,
+    shadowColor: '#8b8c8b',
     shadowOffset: {
       width: 0,
       height: 0,
@@ -162,8 +162,7 @@ const styles = StyleSheet.create({
 
   seriesText: {
     color: "white",
-    fontWeight: '500',
-    fontSize: 17
+    fontWeight: "500"
   },
 
   addIcon: {
