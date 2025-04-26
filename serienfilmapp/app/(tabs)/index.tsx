@@ -1,25 +1,48 @@
-import { Alert, ScrollView, Text, Touchable, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons"
-import DATA from "../../data.json"
+import * as AsyncStorage from "../../utils/AsyncStorage.js"
 
-
-type Variables = {
+interface Serie {
   titel: string;
   season: number;
   episode: number;
 }
 
+let data = [{
+  "titel": "",
+  "season": 0,
+  "episode": 0
+}];
+
+
 const addSerie = () => {
-  alert("neue Serie!!!");
+  //alert("neue Serie!!!");
+  AsyncStorage.getItem('@data').then(function (result) {
+
+    data = result;
+    console.log(data);
+  });
 };
 
 const addSeason = () => {
-  alert("Staffel!!!");
+
+  AsyncStorage.setItem('@data', [{
+    "titel": "Serie 1",
+    "season": 2,
+    "episode": 1
+  }, {
+    "titel": "Serie 3",
+    "season": 2,
+    "episode": 1
+  }]
+  );
+
 };
 
 const addEpisode = () => {
-  alert("Folge!!!");
+
+  //alert(JSON.stringify(getData()));
 };
 
 const deleteSerie = () => {
@@ -27,17 +50,20 @@ const deleteSerie = () => {
 };
 
 export default function Index() {
-
   return (
     <View style={styles.page}>
       <ScrollView >
-        {DATA.map((item) => {
+      {data.map((item) => {
           return (
             <FilmElement titel={item.titel} season={item.season} episode={item.episode} />
           )
         })}
-
         <TouchableOpacity onPress={addSerie}>
+          <View style={{ alignItems: "center", margin: 25 }}>
+            <Ionicons name="add-sharp" style={styles.addIcon} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={addSeason}>
           <View style={{ alignItems: "center", margin: 25 }}>
             <Ionicons name="add-sharp" style={styles.addIcon} />
           </View>
@@ -46,10 +72,14 @@ export default function Index() {
     </View>
   );
 }
-
-const FilmElement = ({ titel, season, episode }: Variables) => {
-
-
+/*
+  {data.map((item) => {
+          return (
+            <FilmElement titel={item.titel} season={item.season} episode={item.episode} />
+          )
+        })}
+          */
+const FilmElement = ({ titel, season, episode }: Serie) => {
 
   return (
     <View style={styles.card}>
