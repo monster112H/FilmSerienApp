@@ -2,6 +2,8 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons"
 import * as AsyncStorage from "../../utils/AsyncStorage.js"
+import React from "react";
+import { sortRoutes } from "expo-router/build/sortRoutes.js";
 
 interface Serie {
   titel: string;
@@ -9,36 +11,7 @@ interface Serie {
   episode: number;
 }
 
-let data = [{
-  "titel": "",
-  "season": 0,
-  "episode": 0
-}];
 
-
-const addSerie = () => {
-  //alert("neue Serie!!!");
-  AsyncStorage.getItem('@data').then(function (result) {
-
-    data = result;
-    console.log(data);
-  });
-};
-
-const addSeason = () => {
-
-  AsyncStorage.setItem('@data', [{
-    "titel": "Serie 1",
-    "season": 2,
-    "episode": 1
-  }, {
-    "titel": "Serie 3",
-    "season": 2,
-    "episode": 1
-  }]
-  );
-
-};
 
 const addEpisode = () => {
 
@@ -50,22 +23,47 @@ const deleteSerie = () => {
 };
 
 export default function Index() {
+  const counter = 0;
+
+  const [series, setSeries] = React.useState();
+
+  const getData = async () => {
+    const values = await AsyncStorage.getItem('@data');
+    setSeries(JSON.parse(values));
+  }
+
+  const addSeason = () => {
+
+    AsyncStorage.setItem('@data', [{
+      "titel": "Serie 1",
+      "season": 2,
+      "episode": 1
+    }, {
+      "titel": "Serie 3",
+      "season": 2,
+      "episode": 1
+    }]
+    );
+
+  };
+
+  //React.useEffect(getData);
+
   return (
     <View style={styles.page}>
       <ScrollView >
-      {data.map((item) => {
-          return (
-            <FilmElement titel={item.titel} season={item.season} episode={item.episode} />
-          )
-        })}
-        <TouchableOpacity onPress={addSerie}>
+
+        {series ? <FilmElement titel={series} season={series} episode={series} /> : <Text>Noch keine Serien</Text>}
+
+
+        <TouchableOpacity onPress={addSeason}>
           <View style={{ alignItems: "center", margin: 25 }}>
             <Ionicons name="add-sharp" style={styles.addIcon} />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={addSeason}>
+        <TouchableOpacity onPress={getData}>
           <View style={{ alignItems: "center", margin: 25 }}>
-            <Ionicons name="add-sharp" style={styles.addIcon} />
+            <Ionicons name="add" style={styles.addIcon} />
           </View>
         </TouchableOpacity>
       </ScrollView>
@@ -79,6 +77,8 @@ export default function Index() {
           )
         })}
           */
+
+
 const FilmElement = ({ titel, season, episode }: Serie) => {
 
   return (
@@ -98,7 +98,7 @@ const FilmElement = ({ titel, season, episode }: Serie) => {
             <Text style={styles.seriesText}>
               Staffel:  {season}
             </Text>
-            <TouchableOpacity onPress={addSeason}>
+            <TouchableOpacity>
               <Ionicons name="add-circle-outline" style={styles.icon} />
             </TouchableOpacity>
           </View>
